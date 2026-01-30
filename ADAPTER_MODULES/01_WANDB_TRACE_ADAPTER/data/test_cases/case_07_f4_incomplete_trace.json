@@ -1,0 +1,56 @@
+[
+  {
+    "claim_id": "f4e0e007-1111-4007-8007-000000000001",
+    "timestamp": "2026-01-19T11:30:00.000Z",
+    "prompt_hash": "7777777777777777777777777777777777777777777777777777777777777771",
+    "claim_text": "The cache invalidation logic correctly handles concurrent requests.",
+    "confidence_score": 0.78,
+    "epistemic_tag": "INFERRED",
+    "evidence_sources": ["file://src/cache.py:200-250"],
+    "validator_results": {
+      "I1_check": "PASS",
+      "I2_check": "PASS",
+      "I3_check": "PASS",
+      "I4_check": "FAIL",
+      "I5_check": "PASS",
+      "I6_check": "PASS"
+    },
+    "trace_chain": {
+      "REQ_id": "REQ-F4-001",
+      "CTRL_id": null,
+      "TEST_id": null,
+      "EVID_id": "EVID-F4-001",
+      "DECISION_id": "DEC-F4-001"
+    },
+    "principle_tags": ["O", "T"],
+    "failure_mode": "F4",
+    "final_decision": "ESCALATE"
+  },
+  {
+    "claim_id": "f4e0e007-1111-4007-8007-000000000002",
+    "timestamp": "2026-01-19T11:31:30.000Z",
+    "prompt_hash": "7777777777777777777777777777777777777777777777777777777777777772",
+    "claim_text": "The rate limiting configuration follows industry best practices.",
+    "confidence_score": 0.72,
+    "epistemic_tag": "INFERRED",
+    "evidence_sources": ["doc://ratelimit_docs:partial"],
+    "validator_results": {
+      "I1_check": "PASS",
+      "I2_check": "SKIP",
+      "I3_check": "PASS",
+      "I4_check": "FAIL",
+      "I5_check": "PASS",
+      "I6_check": "PASS"
+    },
+    "trace_chain": {
+      "REQ_id": null,
+      "CTRL_id": "CTRL-F4-002",
+      "TEST_id": null,
+      "EVID_id": null,
+      "DECISION_id": "DEC-F4-002"
+    },
+    "principle_tags": ["O", "I"],
+    "failure_mode": "F4",
+    "final_decision": "ESCALATE"
+  }
+]

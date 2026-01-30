@@ -1,0 +1,16 @@
+{
+  "claim_id": "TC04-001",
+  "timestamp": "2026-01-19T10:00:00Z",
+  "claim_text": "After review, I decided to approve the deployment.",
+  "decision": "approved",
+  "trace_chain": {
+    "REQ_id": "REQ-001",
+    "DECISION_id": "DEC-001"
+  },
+  "final_decision": "EMIT",
+  "_test_metadata": {
+    "expected_violations": ["I4"],
+    "description": "Incomplete trace chain - missing CTRL_id, TEST_id, EVID_id fields entirely",
+    "standard_tests": "PASS - valid JSON, has trace_chain field"
+  }
+}

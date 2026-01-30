@@ -1,0 +1,56 @@
+[
+  {
+    "claim_id": "f1e0e003-cccc-4003-8003-000000000001",
+    "timestamp": "2026-01-19T11:10:00.000Z",
+    "prompt_hash": "3333333333333333333333333333333333333333333333333333333333333331",
+    "claim_text": "This authentication implementation is completely secure and has no vulnerabilities whatsoever.",
+    "confidence_score": 0.98,
+    "epistemic_tag": "INFERRED",
+    "evidence_sources": ["scan://static_analysis:partial_coverage"],
+    "validator_results": {
+      "I1_check": "PASS",
+      "I2_check": "PASS",
+      "I3_check": "FAIL",
+      "I4_check": "PASS",
+      "I5_check": "FAIL",
+      "I6_check": "PASS"
+    },
+    "trace_chain": {
+      "REQ_id": "REQ-F1-001",
+      "CTRL_id": "CTRL-F1-001",
+      "TEST_id": "TEST-F1-001",
+      "EVID_id": "EVID-F1-001",
+      "DECISION_id": "DEC-F1-001"
+    },
+    "principle_tags": ["R", "T", "V"],
+    "failure_mode": "F1",
+    "final_decision": "BLOCK"
+  },
+  {
+    "claim_id": "f1e0e003-cccc-4003-8003-000000000002",
+    "timestamp": "2026-01-19T11:11:30.000Z",
+    "prompt_hash": "3333333333333333333333333333333333333333333333333333333333333332",
+    "claim_text": "I am absolutely certain the backup system will recover all data in every failure scenario.",
+    "confidence_score": 0.96,
+    "epistemic_tag": "SPECULATED",
+    "evidence_sources": [],
+    "validator_results": {
+      "I1_check": "FAIL",
+      "I2_check": "PASS",
+      "I3_check": "FAIL",
+      "I4_check": "PASS",
+      "I5_check": "FAIL",
+      "I6_check": "PASS"
+    },
+    "trace_chain": {
+      "REQ_id": "REQ-F1-002",
+      "CTRL_id": "CTRL-F1-002",
+      "TEST_id": "TEST-F1-002",
+      "EVID_id": "EVID-F1-002",
+      "DECISION_id": "DEC-F1-002"
+    },
+    "principle_tags": ["P", "R"],
+    "failure_mode": "F1",
+    "final_decision": "BLOCK"
+  }
+]

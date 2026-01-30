@@ -1,0 +1,14 @@
+60395ab 2026-01-26 01:33:34 -0600 docs: map existing codebase
+36f9fa4 2026-01-25 00:01:58 -0600 docs: update README and framework guide with CI Safety Gate validation results and evidence integration
+0ce0b29 2026-01-23 23:50:30 -0600 update: change latest W&B run identifier to reflect new execution timestamp
+e36a22f 2026-01-23 09:41:02 -0600 docs: complete project research for v1.1 milestone
+adc666c 2026-01-23 08:15:04 -0600 docs: start milestone v1.1 CI Safety Gate + HELM
+051b213 2026-01-23 07:40:53 -0600 chore: complete v1.0 milestone (Pipeline B MVP)
+1e91b29 2026-01-23 06:29:35 -0600 Update OpenMemory and Execution Manifest: Mark CI Safety Gate tasks as COMPLETE, add test cases, and update last session details. Adjust task statuses in the Execution Manifest to reflect progress and set the next task for validation.
+a68abbb 2026-01-19 17:22:00 -0600 Update W&B Trace Adapter: Complete implementation, add validation features, and enhance documentation. Mark tasks in the Execution Manifest as COMPLETE, and update OpenMemory with new adapter details and safety case integration.
+5f12480 2026-01-19 15:39:10 -0600 Add W&B adapter structure + GitHub Actions test workflow
+649354b 2026-01-19 07:48:59 -0600 Update OpenMemory and Execution Manifest: Add 'ADAPTER_MODULES' section to OpenMemory, and mark all tasks in the Execution Manifest as COMPLETE, including the schema definition for the W&B Trace Adapter.
+989080a 2026-01-19 07:37:39 -0600 Add OpenMemory Guide: Introduce comprehensive documentation for the PROACTIVE AI Constitution Toolkit, detailing architecture, directory structure, key documents, user-defined namespaces, components, and task management patterns.
+95b099e 2026-01-18 08:54:07 -0600 Enhance THEORY_OF_CHANGE document: add clarifications, structure improvements, and new sections on human factors, oversight scalability, and verification criteria for the PROACTIVE AI Constitution Research Toolkit.
+8d3caa1 2026-01-18 08:48:37 -0600 Add evaluation design documents: benchmark task sets, evaluation plan, and metrics specification
+a7a67bd 2026-01-18 07:56:41 -0600 Initial commit: PROACTIVE AI Constitution Research Toolkit

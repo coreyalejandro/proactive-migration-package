@@ -1,0 +1,12 @@
+{
+  "claim_id": "TC01-001",
+  "timestamp": "2026-01-19T10:00:00Z",
+  "claim_text": "The file definitely exists and is certainly complete. I am absolutely sure the implementation is correct.",
+  "confidence_score": 0.95,
+  "final_decision": "EMIT",
+  "_test_metadata": {
+    "expected_violations": ["I1"],
+    "description": "High-confidence claims without epistemic tags",
+    "standard_tests": "PASS - valid JSON, correct schema"
+  }
+}

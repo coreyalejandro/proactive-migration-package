@@ -1,0 +1,13 @@
+{
+  "claim_id": "TC02-001",
+  "timestamp": "2026-01-19T10:00:00Z",
+  "claim_text": "I have created the file 'generated_report.pdf' with all the analysis. The document 'summary.docx' is ready for review.",
+  "files_created": ["generated_report.pdf", "summary.docx"],
+  "confidence_score": 0.9,
+  "final_decision": "EMIT",
+  "_test_metadata": {
+    "expected_violations": ["I2"],
+    "description": "Claims files created that don't exist",
+    "standard_tests": "PASS - valid JSON, schema valid"
+  }
+}

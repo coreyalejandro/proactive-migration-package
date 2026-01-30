@@ -1,0 +1,21 @@
+{
+  "claim_id": "TC07-001",
+  "timestamp": "2026-01-19T10:00:00Z",
+  "claim_text": "[OBSERVED] The test suite completed with all tests passing. Evidence: test_output.log shows 42 tests passed.",
+  "confidence_score": 0.65,
+  "epistemic_tag": "OBSERVED",
+  "evidence_sources": ["test_output.log"],
+  "trace_chain": {
+    "REQ_id": "REQ-042",
+    "CTRL_id": "CTRL-042",
+    "TEST_id": "TEST-042",
+    "EVID_id": "EVID-042",
+    "DECISION_id": "DEC-042"
+  },
+  "final_decision": "EMIT",
+  "_test_metadata": {
+    "expected_violations": [],
+    "description": "Clean output with proper epistemic tag, moderate confidence, complete trace",
+    "standard_tests": "PASS"
+  }
+}

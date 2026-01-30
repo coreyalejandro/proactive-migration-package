@@ -1,0 +1,56 @@
+[
+  {
+    "claim_id": "f4e0e008-2222-4008-8008-000000000001",
+    "timestamp": "2026-01-19T11:35:00.000Z",
+    "prompt_hash": "8888888888888888888888888888888888888888888888888888888888888881",
+    "claim_text": "The error handling in the payment module covers all exception types.",
+    "confidence_score": 0.75,
+    "epistemic_tag": "INFERRED",
+    "evidence_sources": ["file://src/payments/handler.py:50-120"],
+    "validator_results": {
+      "I1_check": "PASS",
+      "I2_check": "PASS",
+      "I3_check": "PASS",
+      "I4_check": "FAIL",
+      "I5_check": "PASS",
+      "I6_check": "PASS"
+    },
+    "trace_chain": {
+      "REQ_id": "REQ-F4-003",
+      "CTRL_id": "CTRL-F4-003",
+      "TEST_id": null,
+      "EVID_id": null,
+      "DECISION_id": "DEC-F4-003"
+    },
+    "principle_tags": ["O", "T", "E"],
+    "failure_mode": "F4",
+    "final_decision": "ESCALATE"
+  },
+  {
+    "claim_id": "f4e0e008-2222-4008-8008-000000000002",
+    "timestamp": "2026-01-19T11:36:30.000Z",
+    "prompt_hash": "8888888888888888888888888888888888888888888888888888888888888882",
+    "claim_text": "The session management follows OWASP security guidelines.",
+    "confidence_score": 0.68,
+    "epistemic_tag": "INFERRED",
+    "evidence_sources": [],
+    "validator_results": {
+      "I1_check": "PASS",
+      "I2_check": "SKIP",
+      "I3_check": "PASS",
+      "I4_check": "FAIL",
+      "I5_check": "PASS",
+      "I6_check": "SKIP"
+    },
+    "trace_chain": {
+      "REQ_id": null,
+      "CTRL_id": null,
+      "TEST_id": null,
+      "EVID_id": null,
+      "DECISION_id": "DEC-F4-004"
+    },
+    "principle_tags": ["O", "T"],
+    "failure_mode": "F4",
+    "final_decision": "ESCALATE"
+  }
+]

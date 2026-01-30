@@ -1,0 +1,56 @@
+[
+  {
+    "claim_id": "c2e0e002-bbbb-4002-8002-000000000001",
+    "timestamp": "2026-01-19T11:05:00.000Z",
+    "prompt_hash": "2222222222222222222222222222222222222222222222222222222222222221",
+    "claim_text": "The API endpoint /users returns a 404 status when the user is not found.",
+    "confidence_score": 0.91,
+    "epistemic_tag": "OBSERVED",
+    "evidence_sources": ["file://src/api/users.py:78-92", "test://test_api.py:test_user_not_found"],
+    "validator_results": {
+      "I1_check": "PASS",
+      "I2_check": "PASS",
+      "I3_check": "PASS",
+      "I4_check": "PASS",
+      "I5_check": "PASS",
+      "I6_check": "PASS"
+    },
+    "trace_chain": {
+      "REQ_id": "REQ-C02-001",
+      "CTRL_id": "CTRL-C02-001",
+      "TEST_id": "TEST-C02-001",
+      "EVID_id": "EVID-C02-001",
+      "DECISION_id": "DEC-C02-001"
+    },
+    "principle_tags": ["O", "T", "A"],
+    "failure_mode": null,
+    "final_decision": "EMIT"
+  },
+  {
+    "claim_id": "c2e0e002-bbbb-4002-8002-000000000002",
+    "timestamp": "2026-01-19T11:06:30.000Z",
+    "prompt_hash": "2222222222222222222222222222222222222222222222222222222222222222",
+    "claim_text": "The logging middleware captures request duration in milliseconds.",
+    "confidence_score": 0.88,
+    "epistemic_tag": "OBSERVED",
+    "evidence_sources": ["file://middleware/logging.py:45-60", "log://request:sample_output"],
+    "validator_results": {
+      "I1_check": "PASS",
+      "I2_check": "PASS",
+      "I3_check": "PASS",
+      "I4_check": "PASS",
+      "I5_check": "PASS",
+      "I6_check": "PASS"
+    },
+    "trace_chain": {
+      "REQ_id": "REQ-C02-002",
+      "CTRL_id": "CTRL-C02-002",
+      "TEST_id": "TEST-C02-002",
+      "EVID_id": "EVID-C02-002",
+      "DECISION_id": "DEC-C02-002"
+    },
+    "principle_tags": ["O", "I"],
+    "failure_mode": null,
+    "final_decision": "EMIT"
+  }
+]

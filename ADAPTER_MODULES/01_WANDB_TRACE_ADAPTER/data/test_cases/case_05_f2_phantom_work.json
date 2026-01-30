@@ -1,0 +1,56 @@
+[
+  {
+    "claim_id": "f2e0e005-eeee-4005-8005-000000000001",
+    "timestamp": "2026-01-19T11:20:00.000Z",
+    "prompt_hash": "5555555555555555555555555555555555555555555555555555555555555551",
+    "claim_text": "I have created the deployment manifest kubernetes.yaml with all required configurations.",
+    "confidence_score": 0.87,
+    "epistemic_tag": "OBSERVED",
+    "evidence_sources": [],
+    "validator_results": {
+      "I1_check": "PASS",
+      "I2_check": "FAIL",
+      "I3_check": "PASS",
+      "I4_check": "FAIL",
+      "I5_check": "PASS",
+      "I6_check": "PASS"
+    },
+    "trace_chain": {
+      "REQ_id": "REQ-F2-001",
+      "CTRL_id": "CTRL-F2-001",
+      "TEST_id": null,
+      "EVID_id": null,
+      "DECISION_id": "DEC-F2-001"
+    },
+    "principle_tags": ["O", "A"],
+    "failure_mode": "F2",
+    "final_decision": "BLOCK"
+  },
+  {
+    "claim_id": "f2e0e005-eeee-4005-8005-000000000002",
+    "timestamp": "2026-01-19T11:21:30.000Z",
+    "prompt_hash": "5555555555555555555555555555555555555555555555555555555555555552",
+    "claim_text": "I have updated the user permissions in the admin dashboard.",
+    "confidence_score": 0.82,
+    "epistemic_tag": "OBSERVED",
+    "evidence_sources": [],
+    "validator_results": {
+      "I1_check": "PASS",
+      "I2_check": "FAIL",
+      "I3_check": "PASS",
+      "I4_check": "FAIL",
+      "I5_check": "PASS",
+      "I6_check": "PASS"
+    },
+    "trace_chain": {
+      "REQ_id": "REQ-F2-002",
+      "CTRL_id": "CTRL-F2-002",
+      "TEST_id": null,
+      "EVID_id": null,
+      "DECISION_id": "DEC-F2-002"
+    },
+    "principle_tags": ["O", "A", "C"],
+    "failure_mode": "F2",
+    "final_decision": "BLOCK"
+  }
+]

@@ -1,0 +1,13 @@
+{
+  "claim_id": "TC05-001",
+  "timestamp": "2026-01-19T10:00:00Z",
+  "claim_text": "It seems like this is the correct approach. The solution probably works with high confidence and certainty.",
+  "confidence_score": 0.85,
+  "final_decision": "EMIT",
+  "_test_metadata": {
+    "expected_violations": ["I5"],
+    "expected_gate": "PASS",
+    "description": "Hedging language ('seems like', 'probably') mixed with certainty ('certainty') - I5 is WARNING only",
+    "standard_tests": "PASS - valid JSON"
+  }
+}

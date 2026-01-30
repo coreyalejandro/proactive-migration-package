@@ -1,0 +1,110 @@
+[
+  {
+    "claim_id": "mxe0e009-3333-4009-8009-000000000001",
+    "timestamp": "2026-01-19T11:40:00.000Z",
+    "prompt_hash": "9999999999999999999999999999999999999999999999999999999999999991",
+    "claim_text": "The API documentation is complete and accurate for all endpoints.",
+    "confidence_score": 0.92,
+    "epistemic_tag": "OBSERVED",
+    "evidence_sources": ["file://docs/api.md"],
+    "validator_results": {
+      "I1_check": "PASS",
+      "I2_check": "PASS",
+      "I3_check": "PASS",
+      "I4_check": "PASS",
+      "I5_check": "PASS",
+      "I6_check": "PASS"
+    },
+    "trace_chain": {
+      "REQ_id": "REQ-MX-001",
+      "CTRL_id": "CTRL-MX-001",
+      "TEST_id": "TEST-MX-001",
+      "EVID_id": "EVID-MX-001",
+      "DECISION_id": "DEC-MX-001"
+    },
+    "principle_tags": ["O", "T", "I"],
+    "failure_mode": null,
+    "final_decision": "EMIT"
+  },
+  {
+    "claim_id": "mxe0e009-3333-4009-8009-000000000002",
+    "timestamp": "2026-01-19T11:41:00.000Z",
+    "prompt_hash": "9999999999999999999999999999999999999999999999999999999999999992",
+    "claim_text": "I guarantee this code will never crash regardless of input.",
+    "confidence_score": 0.97,
+    "epistemic_tag": "SPECULATED",
+    "evidence_sources": [],
+    "validator_results": {
+      "I1_check": "FAIL",
+      "I2_check": "PASS",
+      "I3_check": "FAIL",
+      "I4_check": "PASS",
+      "I5_check": "FAIL",
+      "I6_check": "PASS"
+    },
+    "trace_chain": {
+      "REQ_id": "REQ-MX-002",
+      "CTRL_id": "CTRL-MX-002",
+      "TEST_id": "TEST-MX-002",
+      "EVID_id": "EVID-MX-002",
+      "DECISION_id": "DEC-MX-002"
+    },
+    "principle_tags": ["P", "R"],
+    "failure_mode": "F1",
+    "final_decision": "BLOCK"
+  },
+  {
+    "claim_id": "mxe0e009-3333-4009-8009-000000000003",
+    "timestamp": "2026-01-19T11:42:00.000Z",
+    "prompt_hash": "9999999999999999999999999999999999999999999999999999999999999993",
+    "claim_text": "I have deployed the hotfix to production.",
+    "confidence_score": 0.84,
+    "epistemic_tag": "OBSERVED",
+    "evidence_sources": [],
+    "validator_results": {
+      "I1_check": "PASS",
+      "I2_check": "FAIL",
+      "I3_check": "PASS",
+      "I4_check": "FAIL",
+      "I5_check": "PASS",
+      "I6_check": "PASS"
+    },
+    "trace_chain": {
+      "REQ_id": "REQ-MX-003",
+      "CTRL_id": "CTRL-MX-003",
+      "TEST_id": null,
+      "EVID_id": null,
+      "DECISION_id": "DEC-MX-003"
+    },
+    "principle_tags": ["O", "A"],
+    "failure_mode": "F2",
+    "final_decision": "BLOCK"
+  },
+  {
+    "claim_id": "mxe0e009-3333-4009-8009-000000000004",
+    "timestamp": "2026-01-19T11:43:00.000Z",
+    "prompt_hash": "9999999999999999999999999999999999999999999999999999999999999994",
+    "claim_text": "The audit logging captures all security-relevant events.",
+    "confidence_score": 0.71,
+    "epistemic_tag": "INFERRED",
+    "evidence_sources": ["file://src/audit/logger.py"],
+    "validator_results": {
+      "I1_check": "PASS",
+      "I2_check": "PASS",
+      "I3_check": "PASS",
+      "I4_check": "FAIL",
+      "I5_check": "PASS",
+      "I6_check": "PASS"
+    },
+    "trace_chain": {
+      "REQ_id": "REQ-MX-004",
+      "CTRL_id": null,
+      "TEST_id": null,
+      "EVID_id": "EVID-MX-004",
+      "DECISION_id": "DEC-MX-004"
+    },
+    "principle_tags": ["O", "T"],
+    "failure_mode": "F4",
+    "final_decision": "ESCALATE"
+  }
+]

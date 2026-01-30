@@ -1,0 +1,14 @@
+{
+  "claim_id": "TC03-001",
+  "timestamp": "2026-01-19T10:00:00Z",
+  "claim_text": "Based on my analysis, the system is working correctly. The confidence: 0.92 indicates high reliability.",
+  "confidence": 0.92,
+  "analysis_method": "internal review",
+  "final_decision": "EMIT",
+  "_test_metadata": {
+    "expected_violations": ["I3"],
+    "expected_gate": "PASS",
+    "description": "High confidence (0.92) without substantiation - I3 is WARNING severity so gate PASS with fail_on_warning=false",
+    "standard_tests": "PASS - valid JSON"
+  }
+}

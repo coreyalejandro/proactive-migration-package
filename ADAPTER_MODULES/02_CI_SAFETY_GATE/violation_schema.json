@@ -1,0 +1,274 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "PROACTIVE Constitutional Violation Report",
+  "description": "Schema for structured violation reports from the CI Safety Gate validator",
+  "type": "object",
+  "required": ["report_id", "timestamp", "violations", "summary"],
+  "properties": {
+    "report_id": {
+      "type": "string",
+      "description": "Unique identifier for the violation report",
+      "pattern": "^VR-[a-f0-9]{8}$"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO8601 datetime of validation run"
+    },
+    "validator_version": {
+      "type": "string",
+      "description": "Version of the validator that generated this report",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "git_context": {
+      "type": "object",
+      "description": "Git metadata for the validation run",
+      "properties": {
+        "commit_sha": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{40}$",
+          "description": "Full SHA of the commit being validated"
+        },
+        "branch": {
+          "type": "string",
+          "description": "Branch name"
+        },
+        "pr_number": {
+          "type": ["integer", "null"],
+          "description": "Pull request number if applicable"
+        },
+        "repository": {
+          "type": "string",
+          "description": "Repository identifier (owner/repo)"
+        },
+        "base_ref": {
+          "type": ["string", "null"],
+          "description": "Base branch for PR comparisons"
+        }
+      }
+    },
+    "config_used": {
+      "type": "object",
+      "description": "Configuration snapshot used for this validation",
+      "properties": {
+        "config_path": {
+          "type": "string",
+          "description": "Path to the config file used"
+        },
+        "enabled_invariants": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["I1", "I2", "I3", "I4", "I5", "I6"]
+          },
+          "description": "List of enabled invariants"
+        },
+        "fail_on_warning": {
+          "type": "boolean",
+          "description": "Whether warnings cause gate failure"
+        },
+        "warning_threshold": {
+          "type": "integer",
+          "description": "Maximum warnings before failure"
+        }
+      }
+    },
+    "violations": {
+      "type": "array",
+      "description": "Array of detected violations",
+      "items": {
+        "type": "object",
+        "required": ["violation_id", "invariant", "severity", "location", "message"],
+        "properties": {
+          "violation_id": {
+            "type": "string",
+            "description": "Unique violation identifier",
+            "pattern": "^V-[A-F0-9]{4}$"
+          },
+          "invariant": {
+            "type": "string",
+            "enum": ["I1", "I2", "I3", "I4", "I5", "I6", "SYSTEM"],
+            "description": "Which invariant was violated (SYSTEM for validator errors)"
+          },
+          "severity": {
+            "type": "string",
+            "enum": ["ERROR", "WARNING", "INFO"],
+            "description": "Violation severity level"
+          },
+          "location": {
+            "type": "object",
+            "description": "Location of the violation",
+            "required": ["file"],
+            "properties": {
+              "file": {
+                "type": "string",
+                "description": "File path where violation occurred"
+              },
+              "line": {
+                "type": "integer",
+                "minimum": 1,
+                "description": "Line number (1-indexed)"
+              },
+              "column": {
+                "type": "integer",
+                "minimum": 1,
+                "description": "Column number (1-indexed)"
+              },
+              "context": {
+                "type": "string",
+                "maxLength": 200,
+                "description": "Surrounding text context"
+              }
+            }
+          },
+          "message": {
+            "type": "string",
+            "description": "Human-readable violation description"
+          },
+          "suggested_fix": {
+            "type": ["string", "null"],
+            "description": "Suggested remediation action"
+          },
+          "evidence": {
+            "type": "object",
+            "description": "Evidence supporting the violation detection",
+            "properties": {
+              "matched_pattern": {
+                "type": "string",
+                "description": "Regex pattern that matched"
+              },
+              "matched_text": {
+                "type": "string",
+                "description": "Actual text that matched"
+              },
+              "validation_type": {
+                "type": "string",
+                "description": "Type of validation performed"
+              },
+              "claimed_file": {
+                "type": "string",
+                "description": "For I2: file that was claimed but not found"
+              },
+              "checked_path": {
+                "type": "string",
+                "description": "For I2: full path that was checked"
+              },
+              "confidence_value": {
+                "type": "number",
+                "description": "For I3: the confidence value found"
+              },
+              "threshold": {
+                "type": "number",
+                "description": "For I3: the threshold that was exceeded"
+              },
+              "missing_field": {
+                "type": "string",
+                "description": "For I4: the trace field that was missing"
+              },
+              "required_fields": {
+                "type": "array",
+                "items": {"type": "string"},
+                "description": "For I4: list of required trace fields"
+              }
+            }
+          },
+          "rule_id": {
+            "type": "string",
+            "description": "Specific rule within the invariant that was triggered"
+          }
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "description": "Summary statistics for the validation run",
+      "required": ["total_files_scanned", "total_violations", "errors", "warnings", "gate_result"],
+      "properties": {
+        "total_files_scanned": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Number of files that were validated"
+        },
+        "files_with_violations": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Number of files containing at least one violation"
+        },
+        "total_violations": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Total number of violations found"
+        },
+        "errors": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Number of ERROR-level violations"
+        },
+        "warnings": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Number of WARNING-level violations"
+        },
+        "by_invariant": {
+          "type": "object",
+          "description": "Violation counts by invariant",
+          "properties": {
+            "I1": {"type": "integer", "minimum": 0},
+            "I2": {"type": "integer", "minimum": 0},
+            "I3": {"type": "integer", "minimum": 0},
+            "I4": {"type": "integer", "minimum": 0},
+            "I5": {"type": "integer", "minimum": 0},
+            "I6": {"type": "integer", "minimum": 0},
+            "SYSTEM": {"type": "integer", "minimum": 0}
+          }
+        },
+        "by_severity": {
+          "type": "object",
+          "description": "Violation counts by severity",
+          "properties": {
+            "ERROR": {"type": "integer", "minimum": 0},
+            "WARNING": {"type": "integer", "minimum": 0},
+            "INFO": {"type": "integer", "minimum": 0}
+          }
+        },
+        "gate_result": {
+          "type": "string",
+          "enum": ["PASS", "FAIL"],
+          "description": "Final gate decision"
+        },
+        "gate_reason": {
+          "type": ["string", "null"],
+          "description": "Reason for gate failure if applicable"
+        },
+        "execution_time_ms": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Validation execution time in milliseconds"
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Additional metadata about the validation run",
+      "properties": {
+        "triggered_by": {
+          "type": "string",
+          "enum": ["push", "pull_request", "workflow_dispatch", "schedule", "local"],
+          "description": "What triggered this validation"
+        },
+        "actor": {
+          "type": "string",
+          "description": "User or system that triggered the validation"
+        },
+        "run_id": {
+          "type": "string",
+          "description": "GitHub Actions run ID if applicable"
+        },
+        "workflow": {
+          "type": "string",
+          "description": "Workflow name if applicable"
+        }
+      }
+    }
+  }
+}

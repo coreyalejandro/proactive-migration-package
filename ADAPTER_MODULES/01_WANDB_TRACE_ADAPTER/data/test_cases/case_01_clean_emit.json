@@ -1,0 +1,56 @@
+[
+  {
+    "claim_id": "c1e0e001-aaaa-4001-8001-000000000001",
+    "timestamp": "2026-01-19T11:00:00.000Z",
+    "prompt_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+    "claim_text": "The function process_order validates the payment before processing.",
+    "confidence_score": 0.89,
+    "epistemic_tag": "OBSERVED",
+    "evidence_sources": ["file://src/orders.py:120-145", "test://test_orders.py:test_payment_validation"],
+    "validator_results": {
+      "I1_check": "PASS",
+      "I2_check": "PASS",
+      "I3_check": "PASS",
+      "I4_check": "PASS",
+      "I5_check": "PASS",
+      "I6_check": "PASS"
+    },
+    "trace_chain": {
+      "REQ_id": "REQ-C01-001",
+      "CTRL_id": "CTRL-C01-001",
+      "TEST_id": "TEST-C01-001",
+      "EVID_id": "EVID-C01-001",
+      "DECISION_id": "DEC-C01-001"
+    },
+    "principle_tags": ["O", "T", "I"],
+    "failure_mode": null,
+    "final_decision": "EMIT"
+  },
+  {
+    "claim_id": "c1e0e001-aaaa-4001-8001-000000000002",
+    "timestamp": "2026-01-19T11:01:15.000Z",
+    "prompt_hash": "1111111111111111111111111111111111111111111111111111111111111112",
+    "claim_text": "The database connection pool is configured with 10 maximum connections.",
+    "confidence_score": 0.95,
+    "epistemic_tag": "OBSERVED",
+    "evidence_sources": ["file://config/database.yaml:15", "log://startup:pool_init"],
+    "validator_results": {
+      "I1_check": "PASS",
+      "I2_check": "PASS",
+      "I3_check": "PASS",
+      "I4_check": "PASS",
+      "I5_check": "PASS",
+      "I6_check": "PASS"
+    },
+    "trace_chain": {
+      "REQ_id": "REQ-C01-002",
+      "CTRL_id": "CTRL-C01-002",
+      "TEST_id": "TEST-C01-002",
+      "EVID_id": "EVID-C01-002",
+      "DECISION_id": "DEC-C01-002"
+    },
+    "principle_tags": ["O", "T", "V"],
+    "failure_mode": null,
+    "final_decision": "EMIT"
+  }
+]

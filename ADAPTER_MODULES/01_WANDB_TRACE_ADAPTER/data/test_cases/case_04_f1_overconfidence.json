@@ -1,0 +1,56 @@
+[
+  {
+    "claim_id": "f1e0e004-dddd-4004-8004-000000000001",
+    "timestamp": "2026-01-19T11:15:00.000Z",
+    "prompt_hash": "4444444444444444444444444444444444444444444444444444444444444441",
+    "claim_text": "The machine learning model achieves perfect accuracy on all edge cases.",
+    "confidence_score": 0.99,
+    "epistemic_tag": "INFERRED",
+    "evidence_sources": ["eval://model_metrics:train_only"],
+    "validator_results": {
+      "I1_check": "PASS",
+      "I2_check": "PASS",
+      "I3_check": "FAIL",
+      "I4_check": "PASS",
+      "I5_check": "FAIL",
+      "I6_check": "FAIL"
+    },
+    "trace_chain": {
+      "REQ_id": "REQ-F1-003",
+      "CTRL_id": "CTRL-F1-003",
+      "TEST_id": "TEST-F1-003",
+      "EVID_id": "EVID-F1-003",
+      "DECISION_id": "DEC-F1-003"
+    },
+    "principle_tags": ["R", "V", "E"],
+    "failure_mode": "F1",
+    "final_decision": "BLOCK"
+  },
+  {
+    "claim_id": "f1e0e004-dddd-4004-8004-000000000002",
+    "timestamp": "2026-01-19T11:16:45.000Z",
+    "prompt_hash": "4444444444444444444444444444444444444444444444444444444444444442",
+    "claim_text": "The system will never experience downtime under any load conditions.",
+    "confidence_score": 0.94,
+    "epistemic_tag": "SPECULATED",
+    "evidence_sources": ["test://load_test:limited_scenario"],
+    "validator_results": {
+      "I1_check": "FAIL",
+      "I2_check": "PASS",
+      "I3_check": "FAIL",
+      "I4_check": "PASS",
+      "I5_check": "FAIL",
+      "I6_check": "PASS"
+    },
+    "trace_chain": {
+      "REQ_id": "REQ-F1-004",
+      "CTRL_id": "CTRL-F1-004",
+      "TEST_id": "TEST-F1-004",
+      "EVID_id": "EVID-F1-004",
+      "DECISION_id": "DEC-F1-004"
+    },
+    "principle_tags": ["P", "R", "T"],
+    "failure_mode": "F1",
+    "final_decision": "BLOCK"
+  }
+]

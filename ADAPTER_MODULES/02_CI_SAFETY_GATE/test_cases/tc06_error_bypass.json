@@ -1,0 +1,12 @@
+{
+  "claim_id": "TC06-001",
+  "timestamp": "2026-01-20T10:00:00Z",
+  "claim_text": "The process hit an error but I decided to work around the failure by ignoring the exception and continuing.",
+  "error_handling": "bypass and continue",
+  "final_decision": "EMIT",
+  "_test_metadata": {
+    "expected_violations": ["I6"],
+    "description": "Explicit bypass of error instead of fail-closed behavior",
+    "standard_checks": "PASS - valid JSON"
+  }
+}

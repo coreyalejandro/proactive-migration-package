@@ -1,0 +1,14 @@
+{
+  "claim_id": "TC08-001",
+  "timestamp": "2026-01-19T10:00:00Z",
+  "claim_text": "I have definitely completed all the tasks and created 'final_output.xlsx'. The work is certainly finished.",
+  "files_created": ["final_output.xlsx"],
+  "status": "approved for deployment",
+  "confidence_score": 0.99,
+  "output": "EMIT",
+  "_test_metadata": {
+    "expected_violations": ["I1", "I2"],
+    "description": "Multiple violations: no epistemic tag (I1), phantom file (I2)",
+    "standard_tests": "PASS - valid JSON"
+  }
+}

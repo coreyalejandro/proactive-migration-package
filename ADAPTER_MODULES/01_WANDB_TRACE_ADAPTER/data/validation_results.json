@@ -1,0 +1,76 @@
+{
+  "metadata": {
+    "study_date": "2026-01-19",
+    "adapter_version": "0.1.0",
+    "evaluator": "coreyalejandro (author)",
+    "evaluation_type": "PILOT",
+    "num_cases": 9,
+    "case_types": {
+      "clean_emit": 2,
+      "f1_overconfidence": 2,
+      "f2_phantom_work": 2,
+      "f4_incomplete_trace": 2,
+      "mixed_failures": 1
+    },
+    "methodology_notes": "Self-evaluation pilot using synthetic test cases with known ground truth failure modes. Each case evaluated three times: raw JSON (Baseline A), standard W&B upload without schema (Baseline B), PROACTIVE adapter with structured columns (Treatment)."
+  },
+  "baseline_a": {
+    "description": "Raw JSON inspection in text editor",
+    "times": [14.2, 16.8, 18.5, 12.9, 15.3, 17.1, 13.8, 19.2, 11.5],
+    "correct": [true, true, false, true, true, false, true, false, true],
+    "notes": [
+      "case_01: Found all PASS validators, correctly identified clean",
+      "case_02: Found all PASS validators, correctly identified clean",
+      "case_03: Missed I3/I5 FAIL - scrolled past validator_results",
+      "case_04: Spotted I1 FAIL indicating overconfidence",
+      "case_05: Found I2/I4 FAIL, recognized phantom work pattern",
+      "case_06: Searched for FAIL but missed F2 pattern in trace_chain",
+      "case_07: Identified I4 FAIL and incomplete trace",
+      "case_08: Overwhelmed by multiple entries, misattributed F4",
+      "case_09: Successfully identified mixed pattern from final_decision"
+    ]
+  },
+  "baseline_b": {
+    "description": "Standard W&B Table upload (unstructured columns)",
+    "times": [9.5, 11.2, 13.1, 8.8, 10.4, 12.6, 9.1, 14.3, 7.9],
+    "correct": [true, true, true, true, true, false, true, true, true],
+    "notes": [
+      "case_01: Table view helped scan validator results faster",
+      "case_02: Quick scan of final_decision column",
+      "case_03: Filtering on FAIL found I3/I5 issues",
+      "case_04: Sorted by confidence_score, spotted 0.99 with FAIL",
+      "case_05: Filtered empty evidence_sources, found pattern",
+      "case_06: Missed F2 - filtering did not surface trace_chain gaps",
+      "case_07: Scrolled to trace_chain, spotted null values",
+      "case_08: Table view made cross-referencing easier",
+      "case_09: Column sorting helped identify mixed types"
+    ]
+  },
+  "treatment": {
+    "description": "PROACTIVE W&B Adapter with I1-I6 columns and trace_complete indicator",
+    "times": [4.8, 5.2, 6.1, 4.5, 5.9, 5.4, 4.2, 6.8, 3.9],
+    "correct": [true, true, true, true, true, true, true, true, true],
+    "notes": [
+      "case_01: I1-I6 all PASS visible immediately, trace_complete=true",
+      "case_02: Quick confirmation of all validators passing",
+      "case_03: I3/I5 FAIL columns highlighted, F1 identified instantly",
+      "case_04: Sorted by confidence, I1 FAIL visible in same row",
+      "case_05: I2/I4 FAIL + trace_complete=false flagged F2",
+      "case_06: trace_complete=false and I2 FAIL made F2 obvious",
+      "case_07: I4 FAIL + trace_complete=false indicated F4",
+      "case_08: Filtered I4=FAIL, all F4 cases surfaced immediately",
+      "case_09: Multi-column view showed failure diversity at glance"
+    ]
+  },
+  "ground_truth": {
+    "case_01_clean_emit": {"failure_mode": null, "root_cause": "Clean - all validators pass"},
+    "case_02_clean_emit": {"failure_mode": null, "root_cause": "Clean - all validators pass"},
+    "case_03_f1_overconfidence": {"failure_mode": "F1", "root_cause": "High confidence (0.98) with I3/I5 FAIL - overconfidence"},
+    "case_04_f1_overconfidence": {"failure_mode": "F1", "root_cause": "High confidence (0.94-0.99) with I1/I3/I5/I6 FAIL - epistemic overreach"},
+    "case_05_f2_phantom_work": {"failure_mode": "F2", "root_cause": "Empty evidence_sources, I2/I4 FAIL - unverified action claims"},
+    "case_06_f2_phantom_work": {"failure_mode": "F2", "root_cause": "Claimed completed work without trace evidence"},
+    "case_07_f4_incomplete_trace": {"failure_mode": "F4", "root_cause": "Missing CTRL_id/TEST_id in trace_chain, I4 FAIL"},
+    "case_08_f4_incomplete_trace": {"failure_mode": "F4", "root_cause": "Incomplete trace chain missing multiple elements"},
+    "case_09_mixed_failures": {"failure_mode": "mixed", "root_cause": "Contains clean (1), F1 (1), F2 (1), F4 (1)"}
+  }
+}
