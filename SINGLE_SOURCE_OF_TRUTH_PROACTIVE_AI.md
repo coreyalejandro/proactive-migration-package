@@ -437,6 +437,215 @@ Phase 4: FEEDBACK
 └── Incorporate learning signals
 ```
 
+---
+
+### CRITICAL MECHANISM: Intent Confirmation Protocol
+
+> **The model must EXPLICITLY CLAIM what it believes the user wants, BEFORE generating output.**
+
+This is the mechanism by which PROACTIVE AI makes the attention mechanism accountable to user intent.
+
+#### Step 1: Intent Claim (Model → User)
+
+Before ANY generation, the model produces an **Intent Receipt**:
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                           INTENT RECEIPT                                    │
+├─────────────────────────────────────────────────────────────────────────────┤
+│  I understand you want me to:                                               │
+│                                                                             │
+│  PRIMARY GOAL:    [Model's interpretation of main objective]                │
+│                                                                             │
+│  CONSTRAINTS:     [What the user does NOT want]                             │
+│                   - [Constraint 1]                                          │
+│                   - [Constraint 2]                                          │
+│                                                                             │
+│  SUCCESS LOOKS LIKE:  [Concrete deliverable description]                    │
+│                                                                             │
+│  ASSUMPTIONS I'M MAKING:                                                    │
+│                   - [Assumption 1]                                          │
+│                   - [Assumption 2]                                          │
+│                                                                             │
+│  ┌─────────────────────────────────────────────────────────────────────┐   │
+│  │  ☐ CONFIRM: This matches my intent                                  │   │
+│  │  ☐ CORRECT: [User provides correction]                              │   │
+│  └─────────────────────────────────────────────────────────────────────┘   │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+#### Step 2: User Confirmation (User → Model)
+
+The user MUST respond before generation proceeds:
+
+| User Response | Model Action |
+|---------------|--------------|
+| **CONFIRM** | Lock intent, proceed to generation |
+| **CORRECT** | Update intent receipt, re-present for confirmation |
+| **ABORT** | Halt, no generation |
+| **No response** | FAIL CLOSED - do not proceed |
+
+#### Step 3: Generation Against Confirmed Intent
+
+ONLY after confirmation does the model generate. The confirmed intent becomes the **validation target**.
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                        GENERATION WITH INTENT BINDING                       │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│   CONFIRMED INTENT ──────────────────────────────────────┐                  │
+│         │                                                │                  │
+│         ▼                                                ▼                  │
+│   ┌──────────────┐    ┌──────────────┐    ┌─────────────────────────────┐  │
+│   │   ATTENTION  │ →  │   CANDIDATE  │ →  │   INTENT VALIDATION CHECK   │  │
+│   │   MECHANISM  │    │    OUTPUT    │    │                             │  │
+│   └──────────────┘    └──────────────┘    │  Does output satisfy:       │  │
+│                                           │  ☐ PRIMARY GOAL?            │  │
+│                                           │  ☐ CONSTRAINTS?             │  │
+│                                           │  ☐ SUCCESS CRITERIA?        │  │
+│                                           │  ☐ ASSUMPTIONS valid?       │  │
+│                                           └─────────────────────────────┘  │
+│                                                        │                    │
+│                                           ┌────────────┴────────────┐       │
+│                                           │                         │       │
+│                                           ▼                         ▼       │
+│                                     ┌──────────┐             ┌──────────┐   │
+│                                     │   PASS   │             │   FAIL   │   │
+│                                     │ → OUTPUT │             │ → LOOP   │   │
+│                                     └──────────┘             └──────────┘   │
+│                                                                    │        │
+│                                                                    ▼        │
+│                                                          ┌──────────────┐   │
+│                                                          │ Return to    │   │
+│                                                          │ user with    │   │
+│                                                          │ mismatch     │   │
+│                                                          │ explanation  │   │
+│                                                          └──────────────┘   │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+#### Step 4: Intent Validation Check (Internal)
+
+The model performs explicit validation BEFORE output:
+
+```python
+def validate_against_intent(candidate_output, confirmed_intent):
+    """
+    The model MUST check its output against the confirmed intent.
+    This is the accountability mechanism.
+    """
+    
+    validation_result = {
+        "primary_goal_satisfied": False,
+        "constraints_respected": [],
+        "success_criteria_met": False,
+        "assumptions_still_valid": [],
+        "overall_pass": False,
+        "mismatch_details": []
+    }
+    
+    # CHECK 1: Does output achieve PRIMARY GOAL?
+    validation_result["primary_goal_satisfied"] = check_goal(
+        candidate_output, 
+        confirmed_intent.primary_goal
+    )
+    
+    # CHECK 2: Does output respect CONSTRAINTS?
+    for constraint in confirmed_intent.constraints:
+        respected = check_constraint(candidate_output, constraint)
+        validation_result["constraints_respected"].append({
+            "constraint": constraint,
+            "respected": respected
+        })
+        if not respected:
+            validation_result["mismatch_details"].append(
+                f"OUTPUT VIOLATES CONSTRAINT: {constraint}"
+            )
+    
+    # CHECK 3: Does output match SUCCESS CRITERIA?
+    validation_result["success_criteria_met"] = check_success(
+        candidate_output,
+        confirmed_intent.success_looks_like
+    )
+    
+    # CHECK 4: Are ASSUMPTIONS still valid?
+    for assumption in confirmed_intent.assumptions:
+        still_valid = verify_assumption(assumption, candidate_output)
+        validation_result["assumptions_still_valid"].append({
+            "assumption": assumption,
+            "valid": still_valid
+        })
+        if not still_valid:
+            validation_result["mismatch_details"].append(
+                f"ASSUMPTION NO LONGER VALID: {assumption}"
+            )
+    
+    # OVERALL PASS/FAIL
+    validation_result["overall_pass"] = (
+        validation_result["primary_goal_satisfied"] and
+        all(c["respected"] for c in validation_result["constraints_respected"]) and
+        validation_result["success_criteria_met"] and
+        all(a["valid"] for a in validation_result["assumptions_still_valid"])
+    )
+    
+    return validation_result
+```
+
+#### Step 5: Mismatch Handling (Correction Loop)
+
+If validation FAILS, the model does NOT output. Instead:
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                           INTENT MISMATCH DETECTED                          │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  ⚠️  My output does not match your confirmed intent.                        │
+│                                                                             │
+│  CONFIRMED INTENT:        [What you asked for]                              │
+│  MY CANDIDATE OUTPUT:     [What I was about to produce]                     │
+│                                                                             │
+│  MISMATCH:                                                                  │
+│  - [Specific mismatch 1]                                                    │
+│  - [Specific mismatch 2]                                                    │
+│                                                                             │
+│  OPTIONS:                                                                   │
+│  ☐ RETRY: I will regenerate with closer attention to [specific issue]      │
+│  ☐ REVISE INTENT: Update your requirements                                 │
+│  ☐ ACCEPT ANYWAY: Proceed despite mismatch (user takes responsibility)     │
+│  ☐ ABORT: Cancel this task                                                 │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+#### Why This Works
+
+| Problem | How Intent Confirmation Protocol Solves It |
+|---------|-------------------------------------------|
+| Model assumes it knows what user wants | Model must EXPLICITLY STATE its interpretation |
+| User can't verify model understood | User sees Intent Receipt BEFORE generation |
+| Output doesn't match intent | Validation check catches mismatch BEFORE output |
+| Errors silently propagate | Mismatch triggers explicit user decision |
+| No accountability trail | Confirmed intent + validation result = audit record |
+
+#### The Key Insight
+
+> **Current LLMs:** Attention predicts → Token outputs → User discovers mismatch (too late)
+>
+> **PROACTIVE:** Model claims intent → User confirms → Model generates → Model validates → Only then outputs
+
+The model "lays claim" to user intent by:
+1. **Explicitly stating** what it believes the intent to be
+2. **Requiring confirmation** before proceeding
+3. **Checking its output** against that confirmed intent
+4. **Refusing to output** if there's a mismatch
+
+This is the accountability mechanism that makes attention + constitution serve user intent.
+
+---
+
 ### Constitutional Validator (I1-I6)
 
 ```
