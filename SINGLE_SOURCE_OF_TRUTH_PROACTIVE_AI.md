@@ -5,6 +5,92 @@
 
 ---
 
+## FOUNDATIONAL SYNTHESIS: The Two Pillars
+
+> **The fundamental goal of all AI is to produce 100% accurate user-intended outcomes every time.**
+
+PROACTIVE AI brings together two seminal works in Machine Learning:
+
+| Pillar | Work | Year | Contribution |
+|--------|------|------|--------------|
+| **Mechanism** | "Attention Is All You Need" (Vaswani et al.) | 2017 | Self-attention: enables models to weigh relevance of all input tokens simultaneously |
+| **Governance** | Constitutional AI (Anthropic) | 2023-2025 | Behavioral constraints: principles that guide model outputs toward safety |
+
+### The Problem PROACTIVE AI Solves
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                     CURRENT STATE: UNVALIDATED PREDICTION                   │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│   User Intent ──→ Attention Mechanism ──→ Predicted Token ──→ OUTPUT       │
+│                          │                      │                           │
+│                          │                      ▼                           │
+│                          │              ┌──────────────┐                    │
+│                          │              │  NO INTENT   │                    │
+│                          └─────────────→│  VALIDATION  │                    │
+│                                         └──────────────┘                    │
+│                                                                             │
+│   The predicted token PROCEEDS without ever being validated against        │
+│   the user's intent. The attention mechanism is powerful but UNACCOUNTABLE.│
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+### The PROACTIVE Solution
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                    PROACTIVE: ACCOUNTABLE PREDICTION                        │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│   User Intent ──→ COL Compilation ──→ Attention ──→ Constitutional ──→ OUT │
+│        │               │                  │            Validation     │    │
+│        │               │                  │                │          │    │
+│        ▼               ▼                  ▼                ▼          ▼    │
+│   ┌─────────┐    ┌──────────┐      ┌──────────┐     ┌──────────┐  ┌─────┐ │
+│   │ CAPTURE │    │ COMPILE  │      │ GENERATE │     │ VALIDATE │  │TRACE│ │
+│   │ INTENT  │    │ INTENT   │      │ CANDIDATE│     │ vs INTENT│  │CHAIN│ │
+│   └─────────┘    └──────────┘      └──────────┘     └──────────┘  └─────┘ │
+│                                                            │               │
+│                                          ┌─────────────────┴───────────┐   │
+│                                          │  INTENT VALIDATION GATE     │   │
+│                                          │  Pass: Proceed to output    │   │
+│                                          │  Fail: Return to user       │   │
+│                                          └─────────────────────────────┘   │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+### MBSE Makes It Work
+
+PROACTIVE AI is a **Model-Based Systems Engineering (MBSE)** solution that wrangles the power of:
+- **Self-attention mechanism** (raw predictive power)
+- **Constitutional AI** (behavioral governance)
+
+...and makes them:
+
+| Property | How PROACTIVE Achieves It |
+|----------|---------------------------|
+| **TRACEABLE** | Every prediction links back through: REQ → CTRL → TEST → EVID → DECISION |
+| **VERIFIABLE** | Intent receipts create auditable checkpoints before action |
+| **ACCOUNTABLE TO USER INTENT** | No token proceeds without validation against captured intent |
+
+### Why This Matters
+
+Without PROACTIVE:
+- Attention generates fluent, coherent text
+- Constitutional AI constrains harmful outputs
+- **But neither validates that the output matches what the user actually wanted**
+
+With PROACTIVE:
+- User intent is captured and compiled BEFORE generation
+- Generated output is validated AGAINST that intent
+- Mismatches are caught BEFORE they reach the user
+- Every decision is traceable to evidence
+
+---
+
 ## Table of Contents
 
 1. [README](#1-readme)
@@ -22,9 +108,9 @@
 
 ---
 
-# 1. README
+## 1. README
 
-## PROACTIVE AI Constitution Research Toolkit
+### PROACTIVE AI Constitution Research Toolkit
 
 **A comprehensive framework for Constitutional AI safety research, from ideation to arXiv publication.**
 
@@ -36,22 +122,22 @@ The PROACTIVE AI Constitution is a systematic framework for AI safety research t
 
 ### Core Thesis
 
-```
+```text
 "Epistemic reliability is a safety requirement, not a quality feature."
 ```
 
-The framework addresses this through three integrated mechanisms:
+The framework addresses this through three PROACTIVE integrated mechanisms:
 
-1. **Cognitive Operating Layer (COL)**: A boundary layer that compiles user intent, constraints, and risk posture into a traceable representation before any action is taken
+1. **PROACTIVE Cognitive Operating Layer (COL)**: A boundary layer that compiles user intent, constraints, and risk posture into a traceable representation before any action is taken.
 
-2. **PROACTIVE Constitution**: Nine enforceable behavioral constraints implemented as gates that cannot be bypassed
+2. **PROACTIVE Constitution**: Nine enforceable behavioral constraints implemented as gates that cannot be bypassed (Anthropic's )
 
 3. **MBSE Bridge**: A trace chain (Requirement → Control → Test → Evidence → Decision) that makes requirements executable and decisions auditable
 
 ### PROACTIVE Mnemonic (9 Principles)
 
 | Letter | Principle | Enforcement |
-|--------|-----------|-------------|
+|-------------------|-------------|
 | **P** | Privacy-First | Collect minimum data; default local-only |
 | **R** | Reality-Bound | Distinguish facts/inference/speculation |
 | **O** | Observability | Emit structured logs; forensics-ready |
@@ -94,14 +180,14 @@ The framework addresses this through three integrated mechanisms:
 
 ---
 
-# 2. PROACTIVE AI Constitution
+## 2. PROACTIVE AI Constitution
 
-## Master Organizing Principle
+### Master Organizing Principle
 
 **Version:** 2.0  
 **Date:** 2026-01-18
 
-### Core Thesis
+## Core Thesis
 
 > **When an AI system makes confident claims about reality that are false, and users must rely on those claims to act, the resulting harm is operationally indistinguishable from malice—regardless of intent.**
 
