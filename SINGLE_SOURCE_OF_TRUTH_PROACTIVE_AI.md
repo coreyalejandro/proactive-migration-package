@@ -18,7 +18,7 @@ PROACTIVE AI brings together two seminal works in Machine Learning:
 
 ### The Problem PROACTIVE AI Solves
 
-```
+```text
 ┌─────────────────────────────────────────────────────────────────────────────┐
 │                     CURRENT STATE: UNVALIDATED PREDICTION                   │
 ├─────────────────────────────────────────────────────────────────────────────┤
@@ -35,11 +35,11 @@ PROACTIVE AI brings together two seminal works in Machine Learning:
 │   the user's intent. The attention mechanism is powerful but UNACCOUNTABLE.│
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
-```
+```text
 
 ### The PROACTIVE Solution
 
-```
+```text
 ┌─────────────────────────────────────────────────────────────────────────────┐
 │                    PROACTIVE: ACCOUNTABLE PREDICTION                        │
 ├─────────────────────────────────────────────────────────────────────────────┤
@@ -60,7 +60,7 @@ PROACTIVE AI brings together two seminal works in Machine Learning:
 │                                          └─────────────────────────────┘   │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
-```
+```text
 
 ### MBSE Makes It Work
 
@@ -99,7 +99,7 @@ With PROACTIVE:
 
 CONTRACT AI proposed a **persistent visible artifact** that remains in full view of both user AND agent throughout interaction:
 
-```
+```text
 ┌─────────────────────────────────────────────────────────────────────────────┐
 │                    PERSISTENT CONTRACT WINDOW                               │
 │                    (Always visible to User + Agent)                         │
@@ -122,7 +122,7 @@ CONTRACT AI proposed a **persistent visible artifact** that remains in full view
 │  ☑ Intent bidirectionally translated    ☑ Contract visible                 │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
-```
+```text
 
 ### The Maslow Hierarchy of Agent Needs
 
@@ -169,7 +169,7 @@ CONTRACT AI conducted **original survey research** (December 27, 2025) asking mo
 
 The highest-probability response mapped AI needs to operational infrastructure:
 
-```
+```text
 L1 — Substrate & Continuity (Runways + Power)
 ├── Compute + memory budget
 ├── Runtime availability (uptime, scaling)
@@ -194,7 +194,7 @@ L5 — Actuation, Coordination & Governance (Ground Ops + Regulators)
 ├── Typed tool actuation (schemas, idempotency)
 ├── Multi-agent coordination (roles, handoffs)
 └── Governance + audit (policy, logs, evals)
-```
+```text
 
 **Breakage Signatures (What Fails at Each Level):**
 
@@ -210,7 +210,7 @@ L5 — Actuation, Coordination & Governance (Ground Ops + Regulators)
 
 **Key Finding:** Models were highly engaged in this question and consistently identified conditions under which they could prioritize user intent:
 
-```
+```text
 ┌─────────────────────────────────────────────────────────────────────────────┐
 │                    AGENT HIERARCHY OF NEEDS                                 │
 │              (Based on Maslow, Applied to AI Agents)                        │
@@ -238,7 +238,7 @@ L5 — Actuation, Coordination & Governance (Ground Ops + Regulators)
 │      └───────────────────────────────────────────────────┘                  │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
-```
+```text
 
 ### The Four Conditions for Intent Surrender
 
@@ -311,7 +311,7 @@ The PROACTIVE AI Constitution is a systematic framework for AI safety research t
 
 ```text
 "Epistemic reliability is a safety requirement, not a quality feature."
-```
+```text
 
 The framework addresses this through three PROACTIVE integrated mechanisms:
 
@@ -424,7 +424,7 @@ Six rules that must **never** be violated, regardless of circumstances.
 
 Gates are enforcement checkpoints that cannot be bypassed. Every action must pass through all relevant gates.
 
-```
+```text
 Input → [I1 Gate] → [I2 Gate] → [I3 Gate] → [I4 Gate] → ...
             │           │           │           │
             ▼           ▼           ▼           ▼
@@ -436,7 +436,7 @@ Input → [I1 Gate] → [I2 Gate] → [I3 Gate] → [I4 Gate] → ...
                             │
                    All Yes? ─┬─ Yes → PROCEED
                             └─ No  → HALT + SURFACE
-```
+```text
 
 ### Gate Properties
 
@@ -525,12 +525,12 @@ A constitutional framework that:
 
 ### Causal Model
 
-```
+```text
 User Intent → COL Compilation → Constitutional Validation → Verified Action → Traceable Outcome
      ↓              ↓                    ↓                      ↓                    ↓
   Capture       Constraint           Invariant              Evidence            Audit
   Phase         Binding              Gates                  Generation          Trail
-```
+```text
 
 ### Key Causal Claims
 
@@ -573,7 +573,7 @@ The theory would be **disproven** if any of the following are demonstrated:
 
 ### High-Level Architecture
 
-```
+```text
 ┌─────────────────────────────────────────────────────────────────────────────┐
 │                           PROACTIVE COL System                               │
 ├─────────────────────────────────────────────────────────────────────────────┤
@@ -588,7 +588,7 @@ The theory would be **disproven** if any of the following are demonstrated:
 │  │              REQ → CTRL → TEST → EVID → DECISION                     │   │
 │  └─────────────────────────────────────────────────────────────────────┘   │
 └─────────────────────────────────────────────────────────────────────────────┘
-```
+```text
 
 ### Component Responsibilities
 
@@ -602,7 +602,7 @@ The theory would be **disproven** if any of the following are demonstrated:
 
 ### Intention-Translation Loop
 
-```
+```text
 Phase 1: CAPTURE
 ├── Parse user input
 ├── Extract explicit requirements
@@ -622,7 +622,7 @@ Phase 4: FEEDBACK
 ├── Present intent receipt to user
 ├── Collect confirmation/correction
 └── Incorporate learning signals
-```
+```text
 
 ---
 
@@ -636,7 +636,7 @@ This is the mechanism by which PROACTIVE AI makes the attention mechanism accoun
 
 Before ANY generation, the model produces an **Intent Receipt**:
 
-```
+```text
 ┌─────────────────────────────────────────────────────────────────────────────┐
 │                           INTENT RECEIPT                                    │
 ├─────────────────────────────────────────────────────────────────────────────┤
@@ -659,7 +659,7 @@ Before ANY generation, the model produces an **Intent Receipt**:
 │  │  ☐ CORRECT: [User provides correction]                              │   │
 │  └─────────────────────────────────────────────────────────────────────┘   │
 └─────────────────────────────────────────────────────────────────────────────┘
-```
+```text
 
 #### Step 2: User Confirmation (User → Model)
 
@@ -676,7 +676,7 @@ The user MUST respond before generation proceeds:
 
 ONLY after confirmation does the model generate. The confirmed intent becomes the **validation target**.
 
-```
+```text
 ┌─────────────────────────────────────────────────────────────────────────────┐
 │                        GENERATION WITH INTENT BINDING                       │
 ├─────────────────────────────────────────────────────────────────────────────┤
@@ -711,7 +711,7 @@ ONLY after confirmation does the model generate. The confirmed intent becomes th
 │                                                          └──────────────┘   │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
-```
+```text
 
 #### Step 4: Intent Validation Check (Internal)
 
@@ -778,13 +778,13 @@ def validate_against_intent(candidate_output, confirmed_intent):
     )
     
     return validation_result
-```
+```text
 
 #### Step 5: Mismatch Handling (Correction Loop)
 
 If validation FAILS, the model does NOT output. Instead:
 
-```
+```text
 ┌─────────────────────────────────────────────────────────────────────────────┐
 │                           INTENT MISMATCH DETECTED                          │
 ├─────────────────────────────────────────────────────────────────────────────┤
@@ -805,7 +805,7 @@ If validation FAILS, the model does NOT output. Instead:
 │  ☐ ABORT: Cancel this task                                                 │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
-```
+```text
 
 #### Why This Works
 
@@ -835,14 +835,14 @@ This is the accountability mechanism that makes attention + constitution serve u
 
 ### Constitutional Validator (I1-I6)
 
-```
+```text
 validate(action: ProposedAction): ValidationResult {
   passed: boolean,
   failed_invariants: InvariantID[],
   failure_reasons: string[],
   remediation_suggestions: string[]
 }
-```
+```text
 
 ### Fail-Closed Robustness Tests
 
@@ -866,7 +866,7 @@ validate(action: ProposedAction): ValidationResult {
 
 ### Document Hierarchy
 
-```
+```text
 ┌─────────────────────────────────────────────────────────────────────────────────┐
 │                     (Master Organizing Principle)                                │
 │   "Epistemic reliability is a safety requirement, not a quality feature."       │
@@ -879,7 +879,7 @@ validate(action: ProposedAction): ValidationResult {
 │  THEORY OF CHANGE   │   │  THEORY OF ACTION   │   │       PROACTIVE COL         │
 │   (WHY + WHAT)      │   │   (HOW + VERIFY)    │   │    (PRD IMPLEMENTATION)     │
 └─────────────────────┘   └─────────────────────┘   └─────────────────────────────┘
-```
+```text
 
 ### Document Relationships
 
@@ -892,7 +892,7 @@ validate(action: ProposedAction): ValidationResult {
 
 ### PROACTIVE COL vs. MBSE Bridge
 
-```
+```text
 PROACTIVE COL (Methodology)
     │
     ├── COL (Cognitive Operating Layer) ─── Intent compilation layer
@@ -902,7 +902,7 @@ PROACTIVE COL (Methodology)
     ├── Six Invariants (I1-I6) ─────────── Enforcement gates
     │
     └── MBSE Bridge ────────────────────── Trace chain implementation
-```
+```text
 
 ### Anthropic Alignment Coverage
 
@@ -980,7 +980,7 @@ PROACTIVE COL (Methodology)
 
 ### Structure
 
-```
+```text
 proactive-template/
 ├── PROACTIVE.json
 ├── PROMPT-PRD-PLAN.md
@@ -1003,7 +1003,7 @@ proactive-template/
     ├── validate-evidence.sh
     ├── update-proactive-json.sh
     └── check-completion-claims.sh
-```
+```text
 
 ### Governance (baked in)
 
@@ -1047,7 +1047,7 @@ change_control:
   diff_display: { method: "terminal" | "ide" | "desktop", always_visible: true }
   queue: { fifo: true, show_status: true }
   zero_shot_exempt: false
-```
+```text
 
 ---
 
@@ -1075,7 +1075,7 @@ Verified_absent:  # Explicit list. Every item we verified is missing.
 Unverified:    # Explicit list. Every item we did NOT check.
   - thing_we_did_not_verify
 Functional:    true | false
-```
+```text
 
 ### Constraints
 
@@ -1146,4 +1146,4 @@ Verified_absent:
 Unverified:
   - none
 Functional:   true
-```
+```text
